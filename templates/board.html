@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>掲示板</title>
+<style>
+body{margin:0;background:#f5f7fb;font-family:-apple-system}
+main{max-width:720px;margin:auto;padding:20px}
+textarea{width:100%;height:80px;border-radius:14px;padding:12px}
+button{margin-top:8px;padding:10px 16px;border-radius:999px;border:none;background:#007aff;color:white}
+.post{background:white;border-radius:18px;padding:16px;margin-top:14px;box-shadow:0 10px 24px rgba(0,0,0,.08);animation:in .3s}
+.post.admin{background:#fff6cc}
+@keyframes in{from{opacity:0;transform:translateY(16px)}to{opacity:1}}
+</style>
+</head>
+<body>
+<main>
+<form method="post" action="/post">
+<textarea name="content" required></textarea>
+<button>投稿</button>
+</form>
+
+{% for p in posts %}
+<div class="post {% if p.is_admin %}admin{% endif %}">
+<b>{{ p.user }}{% if p.is_admin %} 👑{% endif %}</b><br>
+{{ p.content | e }}<br>
+👍 {{ p.likes }}
+<form method="post" action="/like/{{p.id}}">
+<button>いいね</button>
+</form>
+</div>
+{% endfor %}
+</main>
+</body>
+</html>
