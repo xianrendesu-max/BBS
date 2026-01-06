@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>ログイン</title>
+<style>
+body{margin:0;height:100vh;display:flex;align-items:center;justify-content:center;background:#f5f7fb;font-family:-apple-system,BlinkMacSystemFont,sans-serif}
+.box{background:white;padding:32px;border-radius:20px;box-shadow:0 20px 40px rgba(0,0,0,.12);width:320px}
+input,button{width:100%;padding:12px;margin-top:12px;border-radius:12px;border:1px solid #ddd}
+button{background:#007aff;color:white;border:none}
+</style>
+</head>
+<body>
+<form class="box" method="post">
+<h2>ログイン</h2>
+<input name="username" placeholder="ユーザー名" required>
+<input name="password" type="password" placeholder="パスワード" required>
+<button>ログイン</button>
+<a href="/register">新規登録</a>
+</form>
+</body>
+</html>
