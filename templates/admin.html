@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>管理者</title>
+<style>
+body{margin:0;background:#fffbe6;font-family:-apple-system;padding:20px}
+.post{background:white;padding:14px;border-radius:12px;margin-top:12px}
+button{margin-right:6px}
+</style>
+</head>
+<body>
+<h2>管理者ダッシュボード</h2>
+<p>APIキー: <code>{{ api_key }}</code></p>
+
+{% for p in posts %}
+<div class="post">
+<b>{{ p.user }}</b> 👍{{ p.likes }}<br>
+{{ p.content | e }}
+<form method="post" action="/admin/delete/{{p.id}}">
+<button>削除</button>
+</form>
+<form method="post" action="/admin/pin/{{p.id}}">
+<button>固定切替</button>
+</form>
+</div>
+{% endfor %}
+</body>
+</html>
